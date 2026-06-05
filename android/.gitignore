@@ -1,0 +1,93 @@
+# --------------------------
+# Flutter / Dart
+# --------------------------
+.dart_tool/
+.packages
+.pub-cache/
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+.melos_tool/
+generated_plugin_registrant.dart
+
+# --------------------------
+# Android-specific
+# --------------------------
+/android/.gradle/
+/android/.idea/
+/android/app/build/
+/android/captures/
+/android/gradlew
+/android/gradlew.bat
+/android/local.properties
+/android/.cxx/
+/android/key.properties
+/android/keystore/*.jks
+/android/keystore.properties
+*.iml
+/.externalNativeBuild
+
+# --------------------------
+# iOS-specific
+# --------------------------
+ios/Pods/
+ios/Runner.xcworkspace
+ios/.symlinks
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/.generated/
+ios/build/
+ios/DerivedData/
+*.mode1v3
+*.mode2v3
+*.pbxuser
+*.xcuserstate
+*.xcscmblueprint
+
+# --------------------------
+# IDE / Editor
+# --------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+
+# --------------------------
+# OS Files
+# --------------------------
+.DS_Store
+Thumbs.db
+
+# --------------------------
+# Build outputs
+# --------------------------
+*.apk
+*.aab
+*.ipa
+*.app.dSYM
+*.app
+
+# --------------------------
+# Firebase / Google Services
+# --------------------------
+/android/app/google-services.json
+/ios/Runner/GoogleService-Info.plist
+
+# --------------------------
+# Environment / Config
+# --------------------------
+.env
+.env.*
+
+# --------------------------
+# CI / CD
+# --------------------------
+/fastlane/report.xml
+/fastlane/Preview.html
+/fastlane/screenshots
+
+# --------------------------
+# Generated localization files
+# --------------------------
+lib/l10n/*.dart
