@@ -1,0 +1,24 @@
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+// 🧹 Custom build directory shared across all modules
+def newBuildDir = rootProject.layout.buildDirectory.dir("../../build").get()
+rootProject.layout.buildDirectory.set(newBuildDir)
+
+subprojects {
+    // Apply shared build directory to subprojects
+    def newSubprojectBuildDir = newBuildDir.dir(name)
+    layout.buildDirectory.set(newSubprojectBuildDir)
+
+    // Ensure app is evaluated first
+    evaluationDependsOn(":app")
+}
+
+// 🧼 Clean task to delete entire custom build folder
+tasks.register("clean", Delete) {
+    delete rootProject.layout.buildDirectory
+}

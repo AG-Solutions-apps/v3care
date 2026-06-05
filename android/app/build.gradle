@@ -1,0 +1,74 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins
+    id 'dev.flutter.flutter-gradle-plugin'
+}
+
+// 🔐 Load keystore.properties file
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+if (keystorePropertiesFile.exists()) {
+    keystorePropertiesFile.withInputStream { keystoreProperties.load(it) }
+} else {
+    println "⚠️ keystore.properties file not found at: ${keystorePropertiesFile.absolutePath}"
+}
+
+android {
+    namespace = "com.v3care.agsolution"
+    compileSdk = 36 // flutter.compileSdkVersion
+    ndkVersion = "27.0.12077973" // Use only if native libs are used
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+        coreLibraryDesugaringEnabled = true
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11.toString()
+    }
+
+    defaultConfig {
+        applicationId = "com.v3care.agsolution"
+        minSdkVersion flutter.minSdkVersion // flutter.minSdkVersion
+        targetSdk = 36 // flutter.targetSdkVersion
+        versionCode = 6 // flutter.versionCode
+        versionName = "1.0.6" // flutter.versionName
+    }
+
+    signingConfigs {
+        release {
+            if (keystorePropertiesFile.exists()) {
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+                storeFile file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+            } else {
+                println "⚠️ Skipping signing config: Missing keystore.properties."
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+
+            // Optional: enable for production builds
+            minifyEnabled false
+            shrinkResources false
+            // proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+    }
+}
+
+dependencies {
+    implementation platform("com.google.firebase:firebase-bom:34.1.0")
+    implementation "com.google.firebase:firebase-analytics"
+
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.1.5"
+}
+
+flutter {
+    source "../.."
+}

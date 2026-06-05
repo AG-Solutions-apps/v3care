@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1076547612792",
+    "project_id": "v3care-426110",
+    "storage_bucket": "v3care-426110.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1076547612792:android:a35bc3600e0920d20efd8d",
+        "android_client_info": {
+          "package_name": "com.v3care.agsolution"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBlhVIAkwzNSLgWAQ-g8pqh4fWNmCbaC0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
